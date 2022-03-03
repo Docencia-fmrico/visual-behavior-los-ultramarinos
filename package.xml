@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>fsm_bump_go</name>
+  <name>visual-behavior</name>
   <version>0.0.0</version>
-  <description>The bump and go package</description>
-
+  <description> *** </description>
+ 
   <maintainer email="fmrico@gmail.com">fmrico</maintainer>
 
   <license>Apache 2</license>
