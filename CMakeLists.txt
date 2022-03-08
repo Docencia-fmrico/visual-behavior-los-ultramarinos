@@ -38,6 +38,7 @@ find_package(catkin REQUIRED COMPONENTS roscpp std_msgs geometry_msgs message_ge
 
 add_message_files(
   FILES
+  PolarPoint.msg
   RobotData.msg
 )
 
