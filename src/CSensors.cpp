@@ -47,7 +47,7 @@ void CSensors::OnBoundingBoxReceived(const darknet_ros_msgs::BoundingBoxesConstP
     		float len2 = std::abs(py - py_center);
     		float dot = px * px_center + py * py;
 
-    		float angle = 0.f; //std::acos(dot / (len1 * len2));
+    		float angle = (px - px_center)/(px_center); //0.f; //std::acos(dot / (len1 * len2));
 
 			visual_behavior_los_ultramarinos::PolarPoint pp;
 			pp.distancia = dist;
