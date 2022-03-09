@@ -1,5 +1,5 @@
 <launch>
-	<node pkg="follow_person" type="follow_person" name="follow_person" output="screen">
+	<node pkg="visual_behavior_los_ultramarinos" type="visual_behavior_los_ultramarinos" name="visual_behavior_los_ultramarinos" output="screen">
 	</node>
 
 </launch>

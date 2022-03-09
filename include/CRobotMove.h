@@ -16,7 +16,7 @@ public:
 
 	void OnRobotDataReceived(const visual_behavior_los_ultramarinos::RobotDataConstPtr& msg);
 
-	void moveTo(double x, double y);
+	void computeError(double& distancia, double& angulo);
 private:
 
 	void spin(const ros::TimerEvent& e);
@@ -29,7 +29,9 @@ private:
 	std::unique_ptr<CPidController> mLinCtrler;
 	std::unique_ptr<CPidController> mAngCtrler;
 	geometry_msgs::Pose2D mDestPose;
+	geometry_msgs::Twist mSpeedCmd;
 	bool mIsInPosition;
+	bool mIsRobotMoving;
 	
 };
 

@@ -36,7 +36,7 @@ void CSensors::OnBoundingBoxReceived(const darknet_ros_msgs::BoundingBoxesConstP
 	float py_center=mImageData->image.rows/2;
 	for(int i=0;i<msg->bounding_boxes.size();i++)
 	{
-		if (msg->bounding_boxes[i].Class=="sports ball")
+		if (msg->bounding_boxes[i].Class == "sports ball" or msg->bounding_boxes[i].Class == "person")
 		{
 			float px = (msg->bounding_boxes[i].xmax + msg->bounding_boxes[i].xmin) / 2;
 			float py = (msg->bounding_boxes[i].ymax + msg->bounding_boxes[i].ymin) / 2;
@@ -45,11 +45,21 @@ void CSensors::OnBoundingBoxReceived(const darknet_ros_msgs::BoundingBoxesConstP
 
 			float len1 = std::sqrt((px - px_center) * (px - px_center) + (py - py_center) * (py - py_center));
     		float len2 = std::abs(py - py_center);
-
     		float dot = px * px_center + py * py;
 
-    		float angle = std::acos(dot / (len1 * len2));
+    		float angle = (px - px_center)/(px_center); //0.f; //std::acos(dot / (len1 * len2));
+
+			visual_behavior_los_ultramarinos::PolarPoint pp;
+			pp.distancia = dist;
+			pp.angulo = angle;
+			pp.nombre = msg->bounding_boxes[i].Class;
+
+			mMsgSensorData.boundingboxes.push_back(pp);
+
 			std::cout<<"HAY UNA PELOTA A " << dist << ", ÁNGULO: " << angle << "(" << angle*180.0/M_PI << ")" << std::endl;
 		}
 	}
+	mMsgSensorData.boundingboxes_size = mMsgSensorData.boundingboxes.size();
+	mSensorsPublisher.publish(mMsgSensorData);
+
 }

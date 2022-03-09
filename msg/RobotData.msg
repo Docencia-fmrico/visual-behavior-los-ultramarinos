@@ -6,5 +6,5 @@ std_msgs/Header header          # timestamp in the header is the acquisition tim
                                 # with zero angle being forward along the x axis
 uint32 boundingboxes_size       # 
 
-float32[] boundingboxes         # 
+PolarPoint[] boundingboxes      # 
 geometry_msgs/Pose2D position   # odometry
