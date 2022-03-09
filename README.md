@@ -12,3 +12,82 @@ La práctica se compone de tres partes:
 3. Comportamiento mixto: El robot debe seguir tanto a las personas como a las pelotas que perciba con la cámara, teniendo prioridad la pelota.
 
 Entrega: Viernes 11 de Marzo.
+
+## Índice
+- [Primer Programa](#Primer-Programa)
+- [Follow Person](#Follow-Person)
+- [Tercer Programa](#Tercer-Programa)
+
+## Introducción
+Explicación de la práctica + fotos + esquemas + como se ejecuta
+
+Esta es el behaviortree:
+```mermaid
+graph TD;
+  BehaviorTree-->Reactive_Sequence;
+	Reactive_Sequence-->FallBack;
+    FallBack-->ballseen?;
+    FallBack-->Turn;
+	Reactive_Sequence-->Reac_Seq;
+```
+
+## Primer Programa
+### 1. Objetivo
+El objetivo del primer programa es ...
+### 2. Funciones
+| Funciones | Descripción |
+| --- | --- |
+|  |  |
+|  |  |
+
+```c++
+
+```
+### 3. Vídeo
+
+## Follow Person
+### 1. Objetivo
+El objetivo del segundo programa es seguir a una persona detectandola con darket_ros.
+### 2. Lanzar el programa
+Al ejecutar roscore ponemos en marcha el Master, el servidor de parámetros y rosout que es el log donde podemos mostrar datos para depuración entre otros.
+```
+roscore
+```
+Lanzamos el simulador.
+```
+roslaunch robots sim.launch
+```
+Lanzamos el darknet_ros para detectar la persona.
+```
+roslaunch darknet_ros darknet_ros.launch image:=/camera/rgb/image_raw
+```
+Lanzamos el programa.
+```
+roslaunch visual_behavior_los_ultramarinos follow_person.launch
+```
+### 3. Funciones
+| Funciones | Descripción |
+| --- | --- |
+|  |  |
+|  |  |
+
+```c++
+
+```
+### 4. Vídeo
+
+## Tercer Programa
+### 1. Objetivo
+El objetivo del tercer programa es ...
+### 2. Funciones
+| Funciones | Descripción |
+| --- | --- |
+|  |  |
+|  |  |
+
+```c++
+
+```
+### 3. Vídeo
+
+## Tests
