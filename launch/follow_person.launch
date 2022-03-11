@@ -1,5 +1,0 @@
-<launch>
-	<node pkg="visual_behavior_los_ultramarinos" type="visual_behavior_los_ultramarinos" name="visual_behavior_los_ultramarinos" output="screen">
-	</node>
-
-</launch>
