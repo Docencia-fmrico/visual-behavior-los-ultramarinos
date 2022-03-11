@@ -95,6 +95,9 @@ add_executable(ObservadorPelotas src/ObservadorPelotas.cpp)
 add_executable(ObservadorPersonas src/ObservadorPersonas.cpp)
 add_executable(Coordinador src/Coordinador.cpp)
 
+add_executable( Control src/Control.cpp ) 
+
+
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
 ## target back to the shorter version for ease of user use
@@ -118,3 +121,5 @@ target_link_libraries(ObservadorPersonas
 target_link_libraries(Coordinador
   ${catkin_LIBRARIES}
 )
+target_link_libraries( Control ${catkin_LIBRARIES} 
+ ) 
