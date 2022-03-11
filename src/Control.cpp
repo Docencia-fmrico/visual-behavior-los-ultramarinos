@@ -1,7 +1,8 @@
 
 #include "ros/ros.h"
-#include "geometry_msgs/Twist.h"
+#include "geometry_msgs/Pose2D"
 #include "visual_behavior/Controlador.hpp"
+#include "visual_behavior/PIDController.hpp"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -9,11 +10,11 @@ double dg = 0 ;
 double da = 0 ;
 const int fr = 10 ; // frecuencia 
 
-void messageCallback(const geometry_msgs::Twist::ConstPtr& msg)
+void messageCallback(const geometry_msgs::Pose2D::ConstPtr& msg)
 {
   
- dg = msg->linear.x *10 ; //Bug en el pid de Paco si el rango de entrada es de -1 a 1 no te da los valores correctos en la salida xd
- da = msg->linear.y;
+  dg = msg->x *10 ; //Bug en el pid de Paco si el rango de entrada es de -1 a 1 no te da los valores correctos en la salida xd
+  da = msg->y;
 
   ROS_INFO("Data: DG [%f]  ", dg);
   ROS_INFO("Data: DA [%f]  ", da);
@@ -22,7 +23,7 @@ void messageCallback(const geometry_msgs::Twist::ConstPtr& msg)
 
 
 int main(int argc, char** argv){
-	ros::init(argc, argv, "main");
+	ros::init(argc, argv, "Control");
 
 	ros::NodeHandle nh;
 	Controlador controlador = Controlador();
@@ -53,9 +54,8 @@ int main(int argc, char** argv){
 
 	   pub_vel_.publish(cmd);
 	   ros::spinOnce();
-       //loop_rate.sleep();
+  
 	  
-	  ros::spinOnce();
 	}
 			
 	return 0;

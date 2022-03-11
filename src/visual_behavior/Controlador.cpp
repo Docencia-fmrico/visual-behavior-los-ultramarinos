@@ -7,15 +7,9 @@
 // Preguntar a Paco -//
 
 Controlador::Controlador() 
-: PIDAngular(0, 10.0, -0.75 ,0.75), 
-  PIDLineal(0, 2.0, -0.75 ,0.75)
-/*
-: PIDAngular(rangoAngular[0],rangoAngular[1],rangoAngularSalida[0],rangoAngularSalida[1]), 
-  PIDLineal(rangoLineal[0],rangoLineal[1],rangoLinealSalida[0],rangoLinealSalida[1])
-  */
+: PIDAngular(0, 10.0, -0.75 ,0.75), PIDLineal(0, 2.0, -0.75 ,0.75)
 {
     
-
     distanciaMaxima = 2.0; // *** Cambiar *****
     distanciaSeguridad = 0.0 ; 
      
