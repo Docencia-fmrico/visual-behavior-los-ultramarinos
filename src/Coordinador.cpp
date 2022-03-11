@@ -16,7 +16,7 @@
 	double latest_person;
 	double latest_ball;
 	double now;
-	const double MAX_WAIT = 5;
+	const double MAX_WAIT = 1;
 
 	geometry_msgs::Pose2D lost_;
 	//lost_.x = 0;
@@ -86,8 +86,8 @@ int main(int argc, char** argv)
     if (!lost(latest_ball, now))
     {
 		std::cout << "found ball!" << std::endl;
-		std::cout << ball.x << std::endl;
-		std::cout << ball.y << std::endl;
+		//std::cout << ball.x << std::endl;
+		//std::cout << ball.y << std::endl;
 	    cPub.publish(ball);
     }
     else if (!lost(latest_person, now))
