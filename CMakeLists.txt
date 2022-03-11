@@ -1,13 +1,21 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(visual_behavior_los_ultramarinos)
+project(visual_behavior)
 
 ## Compile as C++14, supported in ROS Kinetic and newer
-add_compile_options(-std=c++14)
+add_compile_options(-std=c++17) # add_compile_options(-std=c++14)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED COMPONENTS roscpp std_msgs geometry_msgs message_generation cv_bridge image_transport)
+find_package(catkin REQUIRED COMPONENTS 
+  roscpp 
+  std_msgs 
+  geometry_msgs 
+  message_generation 
+  cv_bridge 
+  image_transport 
+  roslint
+)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -64,7 +72,6 @@ catkin_package(
   CATKIN_DEPENDS message_runtime
 )
 
-
 ###########
 ## Build ##
 ###########
@@ -72,14 +79,15 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
- include
  ${catkin_INCLUDE_DIRS}
+ include
 )
 
 ## Declare a C++ library
-# add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/practica1.cpp
-# )
+ add_library(${PROJECT_NAME}
+  src/visual_behavior/PIDController.cpp
+  src/visual_behavior/Controlador.cpp
+ )
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
@@ -89,7 +97,12 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-add_executable(${PROJECT_NAME} src/main.cpp src/CSensors.cpp src/CRobotMove.cpp src/CPidController.cpp)
+add_executable( Control src/Control.cpp ) ##src/CSensors.cpp src/CRobotMove.cpp src/CPidController.cpp)
+
+target_link_libraries( Control ${catkin_LIBRARIES} ${PROJECT_NAME} ) 
+
+
+
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -102,6 +115,18 @@ add_executable(${PROJECT_NAME} src/main.cpp src/CSensors.cpp src/CRobotMove.cpp 
 add_dependencies(${PROJECT_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(${PROJECT_NAME}
-  ${catkin_LIBRARIES}
+target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES} )
+
+roslint_cpp (
+  src/Control.cpp 
+  src/visual_behavior/PIDController.cpp 
+  src/visual_behavior/Controller.cpp 
+  src/include/PIDController.hpp
+  src/include/Controller.hpp
 )
+
+catkin_add_gtest(testsControl tests/testsControl.cpp)
+add_dependencies( ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+if(TARGET testsControl)
+  target_link_libraries(testsControl ${catkin_LIBRARIES} ${PROJECT_NAME})
+endif()

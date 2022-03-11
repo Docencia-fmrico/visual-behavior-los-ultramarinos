@@ -13,13 +13,15 @@
 // limitations under the License.
 
 
-#ifndef BR2_TRACKING__PIDCONTROLLER_HPP_
-#define BR2_TRACKING__PIDCONTROLLER_HPP_
+#ifndef VISUAL_BEHAVIOR__CONTROLADOR_HPP_
+#define VISUAL_BEHAVIOR__CONTROLADOR_HPP_
 #include <cmath>
-#include <PIDController.h>
+#include "visual_behavior/PIDController.hpp"
+#include <stdio.h>
+#include <stdlib.h>
 
-namespace br2_tracking
-{
+
+
 
 class PIDController
 {
@@ -37,6 +39,6 @@ private:
   double prev_error_, int_error_;
 };
 
-}  // namespace br2_tracking
+
 
 #endif  // BR2_TRACKING__PIDCONTROLLER_HPP_
