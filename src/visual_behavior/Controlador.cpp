@@ -11,7 +11,7 @@ Controlador::Controlador()
 {
     
     distanciaMaxima = 2.0; // *** Cambiar *****
-    distanciaSeguridad = 0.0 ; 
+    distanciaSeguridad = 0.5 ; 
      
     // intervalos de las referencias de entrada 
     rangoAngular = {0,10.0};
@@ -22,7 +22,7 @@ Controlador::Controlador()
     rangoLinealSalida = {-0.75,0.75};
      
     //
-    alfa = 1.0 ; //parametro que relaiona la el cambio lineal del angulo que el cambio lineal
+    alfa = 0.35 ; //parametro que relaiona la el cambio lineal del angulo que el cambio lineal
 }
 
 

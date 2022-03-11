@@ -41,7 +41,7 @@ void callback_bbx(const sensor_msgs::ImageConstPtr& img, const darknet_ros_msgs:
 			float px = (boxes->bounding_boxes[i].xmax + boxes->bounding_boxes[i].xmin) / 2;
 			float py = (boxes->bounding_boxes[i].ymax + boxes->bounding_boxes[i].ymin) / 2;
 
-			float dist = mImageData->image.at<float>(cv::Point(px, py))* 0.001f;// * 0.01f;
+			float dist = mImageData->image.at<float>(cv::Point(px, py));// * 0.001f;
 
 			if (dist < min_dist)
 			{

@@ -94,9 +94,9 @@ add_library(${PROJECT_NAME}
 ## The recommended prefix ensures that target names across packages don't collide
 
 
-## add_executable(ObservadorPelotas src/ObservadorPelotas.cpp)
-## add_executable(ObservadorPersonas src/ObservadorPersonas.cpp)
-## add_executable(Coordinador src/Coordinador.cpp)
+add_executable(ObservadorPelotas src/ObservadorPelotas.cpp)
+add_executable(ObservadorPersonas src/ObservadorPersonas.cpp)
+add_executable(Coordinador src/Coordinador.cpp)
 
 add_executable( Control src/Control.cpp ) 
 
@@ -112,6 +112,17 @@ add_executable( Control src/Control.cpp )
 ## add_dependencies(${PROJECT_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
+target_link_libraries( ObservadorPelotas 
+${catkin_LIBRARIES}
+)
+
+target_link_libraries( ObservadorPersonas 
+${catkin_LIBRARIES}
+)
+
+target_link_libraries( Coordinador 
+${catkin_LIBRARIES}
+)
 
 target_link_libraries( Control 
 ${catkin_LIBRARIES} 

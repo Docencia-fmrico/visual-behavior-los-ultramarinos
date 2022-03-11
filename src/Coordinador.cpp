@@ -1,10 +1,9 @@
 //#include "Coordinador.h"
 #include "ros/ros.h"
 #include "geometry_msgs/Pose2D.h"
-#include "visual_behavior_los_ultramarinos/RobotData.h"
+//#include "visual_behavior_los_ultramarinos/RobotData.h"
 //#include "visual_behavior_los_ultramarinos/PolarPoint.h"
 #include "tf/tf.h"
-#include "CPidController.h"
 #include <memory>
 
 	int fr =  10;
