@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.0.2)
 project(visual_behavior_los_ultramarinos)
 
 ## Compile as C++14, supported in ROS Kinetic and newer
-add_compile_options(-std=c++14)
+add_compile_options(-std=c++17)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -78,9 +78,11 @@ include_directories(
 )
 
 ## Declare a C++ library
-# add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/practica1.cpp
-# )
+add_library(${PROJECT_NAME}
+  src/visual_behavior/PIDController.cpp
+  src/visual_behavior/Controlador.cpp
+
+)
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
@@ -90,10 +92,11 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-add_executable(${PROJECT_NAME} src/main.cpp src/CSensors.cpp src/CRobotMove.cpp src/CPidController.cpp)
-add_executable(ObservadorPelotas src/ObservadorPelotas.cpp)
-add_executable(ObservadorPersonas src/ObservadorPersonas.cpp)
-add_executable(Coordinador src/Coordinador.cpp)
+
+
+## add_executable(ObservadorPelotas src/ObservadorPelotas.cpp)
+## add_executable(ObservadorPersonas src/ObservadorPersonas.cpp)
+## add_executable(Coordinador src/Coordinador.cpp)
 
 add_executable( Control src/Control.cpp ) 
 
@@ -106,20 +109,13 @@ add_executable( Control src/Control.cpp )
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-add_dependencies(${PROJECT_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+## add_dependencies(${PROJECT_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(${PROJECT_NAME}
-  ${catkin_LIBRARIES}
-)
-target_link_libraries(ObservadorPelotas
-  ${catkin_LIBRARIES}
-)
-target_link_libraries(ObservadorPersonas
-  ${catkin_LIBRARIES}
-)
-target_link_libraries(Coordinador
-  ${catkin_LIBRARIES}
-)
-target_link_libraries( Control ${catkin_LIBRARIES} 
+
+target_link_libraries( Control 
+${catkin_LIBRARIES} 
+${PROJECT_NAME}
  ) 
+
+ 

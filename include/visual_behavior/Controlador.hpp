@@ -9,7 +9,6 @@
 #include "visual_behavior/Controlador.hpp"
 
 
-
 class Controlador {
      
 
@@ -40,7 +39,7 @@ protected:
      PIDController PIDAngular;
      PIDController PIDLineal;
 
-      double alfa;
+     double alfa;
 } ;
 
 
