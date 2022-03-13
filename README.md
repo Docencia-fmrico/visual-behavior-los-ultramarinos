@@ -34,10 +34,10 @@ La funcionalidad de los programas está dividida en tres partes: control, visió
 
 
 ## Control <img src="https://camo.githubusercontent.com/9ed64b042a76b8a97016e877cbaee0d6df224a148034afef658d841cf0cd1791/68747470733a2f2f63756c746f667468657061727479706172726f742e636f6d2f706172726f74732f68642f6c6170746f705f706172726f742e676966" width="30" height="30"/>
-**La parte de control se encarga de calcular las velocidades del robot, en función de lo que orbtiene del coordinador.**
+**La parte de control se encarga de calcular las velocidades del robot, en función de lo que obtiene del coordinador.**
 
 
-Así es como hemosa obtenido los parámetros y los errores:
+Así es como hemos definido los parámetros y los errores:
 
 <img src="https://user-images.githubusercontent.com/98589920/158071760-f407a529-e18c-4e84-a5fc-3bbd6799aefe.png" width="250" height="230"/>	<img src="https://user-images.githubusercontent.com/98589920/158072158-0a0dbcdf-c13a-4b1c-940b-8a5d6683d8ff.png" width="250" height="230"/>	
 <img src="https://user-images.githubusercontent.com/98589920/158070001-26d49b98-c20d-4eb4-8361-679309338973.png" width="200" height="200"/>
@@ -50,11 +50,19 @@ Así es como hemosa obtenido los parámetros y los errores:
 
 Diagrama de bloques del controlador:
 
-<img src="https://user-images.githubusercontent.com/98589920/158069828-c22068a9-308f-4203-98a3-f074b5ffc7de.png" width="369" height="75"/>
+<img src="https://user-images.githubusercontent.com/98589920/158069828-c22068a9-308f-4203-98a3-f074b5ffc7de.png" width="369" height="75"/>	
 
 Aplicamos el PID:
 
-<img src="https://user-images.githubusercontent.com/69701088/156851248-dc2d6777-d927-4fbb-9507-f9312af57cbf.gif" width="369" height="369"/>
+<img src="https://user-images.githubusercontent.com/69701088/156851248-dc2d6777-d927-4fbb-9507-f9312af57cbf.gif" width="369" height="369"/>	<img src="https://user-images.githubusercontent.com/98589920/158074027-2c4906e3-9d57-4742-b7c3-fba1c1d4dea1.gif" width="369" height="369"/>
+
+Funcionalidades del nodo
+| Funciones | Descripción |
+| --- | --- |
+| errorGiro | Función que calcula el error de giro as partir de dg |
+| errorAvance | Función que obtiene el error de avance a partir de da |
+| velocidadLineal | Función que calcula la velocidad lineal a partir del error de avance |
+| velocidadAngular | Función que calcula la velocidad angular a partir del error de giro |
 
 
 ## Coordinación <img src="https://camo.githubusercontent.com/9ed64b042a76b8a97016e877cbaee0d6df224a148034afef658d841cf0cd1791/68747470733a2f2f63756c746f667468657061727479706172726f742e636f6d2f706172726f74732f68642f6c6170746f705f706172726f742e676966" width="30" height="30"/>
