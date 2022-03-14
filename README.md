@@ -40,16 +40,17 @@ La funcionalidad de los programas está dividida en tres partes: control, visió
 
 Así es como hemos definido los parámetros y los errores:
 
-<img src="https://user-images.githubusercontent.com/98589920/158070001-26d49b98-c20d-4eb4-8361-679309338973.png" width="200" height="200"/><img src="https://user-images.githubusercontent.com/98589920/158071760-f407a529-e18c-4e84-a5fc-3bbd6799aefe.png" width="250" height="230"/><img src="https://user-images.githubusercontent.com/98589920/158072158-0a0dbcdf-c13a-4b1c-940b-8a5d6683d8ff.png" width="250" height="230"/>	
+<img src="https://user-images.githubusercontent.com/98589920/158071760-f407a529-e18c-4e84-a5fc-3bbd6799aefe.png" width="250" height="230"/><img src="https://user-images.githubusercontent.com/98589920/158072158-0a0dbcdf-c13a-4b1c-940b-8a5d6683d8ff.png" width="250" height="230"/>	
 
 
 Diagrama de bloques del controlador:
 
-<img src="https://user-images.githubusercontent.com/98589920/158069828-c22068a9-308f-4203-98a3-f074b5ffc7de.png" width="369" height="75"/>	
+<img src="https://user-images.githubusercontent.com/98589920/158069828-c22068a9-308f-4203-98a3-f074b5ffc7de.png" width="400" height="100"/> <img src="https://user-images.githubusercontent.com/98589920/158070001-26d49b98-c20d-4eb4-8361-679309338973.png" width="100" height="100"/>	
 
 Aplicamos el PID:
 
-<img src="https://user-images.githubusercontent.com/69701088/156851248-dc2d6777-d927-4fbb-9507-f9312af57cbf.gif" width="369" height="369"/>	<img src="https://user-images.githubusercontent.com/98589920/158074027-2c4906e3-9d57-4742-b7c3-fba1c1d4dea1.gif" width="369" height="369"/>
+
+<img src="https://user-images.githubusercontent.com/69701088/156851248-dc2d6777-d927-4fbb-9507-f9312af57cbf.gif" width="400" height="400"/>	
 
 Funcionalidades del nodo
 | Funciones | Descripción |
