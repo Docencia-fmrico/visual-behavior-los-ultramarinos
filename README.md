@@ -29,6 +29,8 @@ Entrega: Viernes 18 de Marzo.
 Práctica 2 de la asignatura software para robots:
 Consiste en conseguir que un robot kobuki pueda seguir personas, pelotas (u objetos similasres) o ambos.
 
+<img src="https://user-images.githubusercontent.com/69701088/158229459-9540713f-98b9-4e3a-9b9b-2cc24609c321.gif" width="480" height="270"/> <img src="https://user-images.githubusercontent.com/69701088/158232410-e77b989b-465b-4e73-a331-04579db9fa5a.gif" width="320" height="270"/>
+
 La funcionalidad de los programas está dividida en tres partes: control, visión y coordinación.
 
 
@@ -36,16 +38,9 @@ La funcionalidad de los programas está dividida en tres partes: control, visió
 ## Control <img src="https://camo.githubusercontent.com/9ed64b042a76b8a97016e877cbaee0d6df224a148034afef658d841cf0cd1791/68747470733a2f2f63756c746f667468657061727479706172726f742e636f6d2f706172726f74732f68642f6c6170746f705f706172726f742e676966" width="30" height="30"/>
 **La parte de control se encarga de calcular las velocidades del robot, en función de lo que obtiene del coordinador.**
 
-
 Así es como hemos definido los parámetros y los errores:
 
-<img src="https://user-images.githubusercontent.com/98589920/158071760-f407a529-e18c-4e84-a5fc-3bbd6799aefe.png" width="250" height="230"/>	<img src="https://user-images.githubusercontent.com/98589920/158072158-0a0dbcdf-c13a-4b1c-940b-8a5d6683d8ff.png" width="250" height="230"/>	
-<img src="https://user-images.githubusercontent.com/98589920/158070001-26d49b98-c20d-4eb4-8361-679309338973.png" width="200" height="200"/>
-
-
-
-
-
+<img src="https://user-images.githubusercontent.com/98589920/158070001-26d49b98-c20d-4eb4-8361-679309338973.png" width="200" height="200"/><img src="https://user-images.githubusercontent.com/98589920/158071760-f407a529-e18c-4e84-a5fc-3bbd6799aefe.png" width="250" height="230"/><img src="https://user-images.githubusercontent.com/98589920/158072158-0a0dbcdf-c13a-4b1c-940b-8a5d6683d8ff.png" width="250" height="230"/>	
 
 
 Diagrama de bloques del controlador:
