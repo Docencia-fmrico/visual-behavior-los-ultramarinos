@@ -7,11 +7,11 @@
 // Preguntar a Paco -//
 
 Controlador::Controlador() 
-: PIDAngular(0, 10.0, -0.75 ,0.75), PIDLineal(0, 2.0, -0.75 ,0.75)
+: PIDAngular(0, 10.0, -0.8 ,0.8), PIDLineal(0, 3.0, -0.5 ,0.5)
 {
     
-    distanciaMaxima = 2.0; // *** Cambiar *****
-    distanciaSeguridad = 0.5 ; 
+    distanciaMaxima = 1.2; // *** Cambiar *****
+    distanciaSeguridad = 0.35 ; 
      
     // intervalos de las referencias de entrada 
     rangoAngular = {0,10.0};
@@ -22,7 +22,7 @@ Controlador::Controlador()
     rangoLinealSalida = {-0.75,0.75};
      
     //
-    alfa = 0.35 ; //parametro que relaiona la el cambio lineal del angulo que el cambio lineal
+    alfa = 1 ; //parametro que relaiona la el cambio lineal del angulo que el cambio lineal
 }
 
 
