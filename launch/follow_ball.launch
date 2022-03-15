@@ -1,5 +1,4 @@
 <launch>
-
 	<node pkg="visual_behavior_los_ultramarinos" type="ObservadorPelotas" name="ObservadorPelotas" output="screen">
 	</node>
 

@@ -1,4 +1,4 @@
-// Copyright 2021 Intelligent Robotics Lab
+// Copyright 2022 los ultramarinos
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,12 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <algorithm>
 #include "visual_behavior/PIDController.hpp"
 #include <stdio.h>
 #include <stdlib.h>
-
-
+#include <algorithm>
 
 PIDController::PIDController(double min_ref, double max_ref, double min_output, double max_output)
 {
@@ -32,31 +30,35 @@ PIDController::PIDController(double min_ref, double max_ref, double min_output, 
   KD_ = 0.53;
 }
 
-void
-PIDController::set_pid(double n_KP, double n_KI, double n_KD)
+void PIDController::set_pid(double n_KP, double n_KI, double n_KD)
 {
   KP_ = n_KP;
   KI_ = n_KI;
   KD_ = n_KD;
 }
 
-double
-PIDController::get_output(double new_reference)
+double PIDController::get_output(double new_reference)
 {
   double ref = new_reference;
   double output = 0.0;
 
   // Proportional Error
   double direction = 0.0;
-  if (ref != 0.0) {
+  if (ref != 0.0)
+  {
     direction = ref / fabs(ref);
   }
 
-  if (fabs(ref) < min_ref_) {
+  if (fabs(ref) < min_ref_)
+  {
     output = 0.0;
-  } else if (fabs(ref) > max_ref_) {
+  }
+  else if (fabs(ref) > max_ref_)
+  {
     output = direction * max_output_;
-  } else {
+  }
+  else
+  {
     output = direction * min_output_ + ref * (max_output_ - min_output_);
   }
 
@@ -71,5 +73,3 @@ PIDController::get_output(double new_reference)
 
   return std::clamp(output, -max_output_, max_output_);
 }
-
-

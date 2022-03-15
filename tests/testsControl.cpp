@@ -1,33 +1,41 @@
+// Copyright 2022 los ultramarinos
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 #include <gtest/gtest.h>
 #include "ros/ros.h"
 #include "visual_behavior/Controlador.hpp"
 
-
-
 class TestControl: public Controlador
 {
-    public:
-        const double & gira()
-        {
-            Controlador controlador;
-            return controlador.errorGiro(10.11);
-        }
-        
+public:
+  const double & gira()
+  {
+    Controlador controlador;
+    return controlador.errorGiro(10.11);
+  }
 };
 
-
-TEST(Controlador_Test, test_init) 
+TEST(Controlador_Test, test_init)
 {
   TestControl visual_behavior;
 
   ASSERT_EQ(visual_behavior.gira(), 7777.9);
-
-
 }
 
 int main(int argc, char **argv)
 {
-    ros::init(argc, argv, "test");
-    testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
+  ros::init(argc, argv, "test");
+  testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
 }

@@ -1,3 +1,16 @@
+// Copyright 2022 los ultramarinos
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 #include "ros/ros.h"
 #include "geometry_msgs/Pose2D.h"
@@ -7,57 +20,49 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-double dg = 0 ;
-double da = 0 ;
-const int fr = 10 ; // frecuencia 
+double dg = 0;
+double da = 0;
+
 
 void messageCallback(const geometry_msgs::Pose2D::ConstPtr& msg)
 {
-  
-  dg = msg->y *10 ; //Bug en el pid de Paco si el rango de entrada es de -1 a 1 no te da los valores correctos en la salida xd
+  dg = msg->y *10;  // Bug en el pid si el rango de entrada es de -1 a 1 no te da los valores correctos en la salida
   da = msg->x;
 
   ROS_INFO("Data: DG [%f]  ", dg);
   ROS_INFO("Data: DA [%f]  ", da);
-   
 }
 
+int main(int argc, char** argv)
+{
+  const int fr = 10;  // frecuencia
+  ros::init(argc, argv, "Control");
 
-int main(int argc, char** argv){
-	ros::init(argc, argv, "Control");
+  ros::NodeHandle nh;
+  Controlador controlador = Controlador();
 
-	ros::NodeHandle nh;
-	Controlador controlador = Controlador();
+  ros::Subscriber sub = nh.subscribe("/controller_instructions", fr, messageCallback);
+  ros::Publisher pub_vel_ = nh.advertise<geometry_msgs::Twist>("mobile_base/commands/velocity", fr);
 
-	ros::Subscriber sub = nh.subscribe("/controller_instructions", fr, messageCallback);
-	ros::Publisher pub_vel_ = nh.advertise<geometry_msgs::Twist>("mobile_base/commands/velocity",fr);
+  geometry_msgs::Twist cmd;
+  ros::Rate loop_rate(fr);
+  while ( ros::ok() )
+  {
+    double errg = controlador.errorGiro(dg);
+    double erra = controlador.errorAvance(da);
 
+    double w = controlador.velocidadAngular(errg);
+    double v = controlador.velocidadLineal(erra);
 
-    geometry_msgs::Twist cmd;
-	ros::Rate loop_rate(fr);
-	
+    ROS_INFO("Data: v [%f]  ", v);
+    ROS_INFO("Data: w [%f]  ", w);
 
-	while(ros::ok()){
+    cmd.angular.z = w;
+    cmd.linear.x = v;
 
-		
-		double errg = controlador.errorGiro(dg) ; 
-        double erra = controlador.errorAvance(da) ;
+    pub_vel_.publish(cmd);
+    ros::spinOnce();
+  }
 
-		double w = controlador.velocidadAngular( errg );
-        double v = controlador.velocidadLineal( erra  );
-       
-	   ROS_INFO("Data: v [%f]  ", v);
-  	   ROS_INFO("Data: w [%f]  ", w);
-      
-
-	   cmd.angular.z = w;
-	   cmd.linear.x = v;
-
-	   pub_vel_.publish(cmd);
-	   ros::spinOnce();
-  
-	  
-	}
-			
-	return 0;
+  return 0;
 }

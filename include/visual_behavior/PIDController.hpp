@@ -1,4 +1,4 @@
-// Copyright 2021 Intelligent Robotics Lab
+// Copyright 2022 los ultramarinos
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,16 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 #ifndef VISUAL_BEHAVIOR__CONTROLADOR_HPP_
 #define VISUAL_BEHAVIOR__CONTROLADOR_HPP_
 #include <cmath>
-#include "visual_behavior/PIDController.hpp"
 #include <stdio.h>
 #include <stdlib.h>
-
-
-
 
 class PIDController
 {
@@ -38,7 +33,5 @@ private:
   double min_output_, max_output_;
   double prev_error_, int_error_;
 };
-
-
 
 #endif  // BR2_TRACKING__PIDCONTROLLER_HPP_
