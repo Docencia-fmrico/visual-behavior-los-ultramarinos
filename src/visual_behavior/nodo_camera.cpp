@@ -35,7 +35,11 @@ class ImageConverter
   ros::NodeHandle nh_;
   image_transport::ImageTransport it_;
   image_transport::Subscriber image_sub_;
+
+  //image_transport::Subscriber image_sub_depth ;
+
   image_transport::Publisher image_pub_;
+
   int hupper_, hlower_;
   int supper_, slower_;
   int vupper_, vlower_;
@@ -47,6 +51,8 @@ class ImageConverter
 public:
   ImageConverter(): it_(nh_)
   {
+    image_sub_depth = it_.subscribe("/camera/depth/image_raw", 1, &ImageConverter::imageCb, this);
+   
     image_sub_ = it_.subscribe("/camera/rgb/image_raw", 1, &ImageConverter::imageCb, this);
     image_pub_ = it_.advertise("/hsv/image_filtered", 1);
 
@@ -62,7 +68,7 @@ public:
     cv::createTrackbar("Val Lower", "Imagen filtrada", &vlower_, 255, NULL);
     cv::createTrackbar("Channel", "Imagen filtrada", &channel_, MAX_CHANNELS-1, NULL);
     cv::setTrackbarPos("Hue Upper", "Imagen filtrada", 360);
-    cv::setTrackbarPos("Hue Lower", "Imagen filtrada", 0);
+    cv::setTrackbarPos("Hue Lower", "Imagen filtrada", 88);
     cv::setTrackbarPos("Sat Upper", "Imagen filtrada", 255);
     cv::setTrackbarPos("Sat Lower", "Imagen filtrada", 0);
     cv::setTrackbarPos("Val Upper", "Imagen filtrada", 255);
@@ -83,7 +89,7 @@ public:
 
   void initChannel(HSVInfo * hsvinfo, int i)
   {
-    hsvinfo->hsv[IDX_h] = 0;
+    hsvinfo->hsv[IDX_h] = 88;
     hsvinfo->hsv[IDX_H] = 360;
     hsvinfo->hsv[IDX_s] = 0;
     hsvinfo->hsv[IDX_S] = 255;
@@ -140,12 +146,17 @@ public:
     int width = hsv.cols;
     int step = hsv.step;
     int channels = 3;  // RGB
-
+   
+    std::vector<float> xs = {} ;
+    std::vector<float> ys = {} ;
+    int n = 0 ;
 
     for (int i=0; i < height; i++ )
       for (int j=0; j < width; j++ )
       {
         int posdata = i * step + j * channels;
+        int x = j ;
+        int y = i ;
 
         if (!((hsv.data[posdata] >= hsvValues_[channel_].hsv[IDX_h]) &&
              (hsv.data[posdata] <= hsvValues_[channel_].hsv[IDX_H]) &&
@@ -157,8 +168,40 @@ public:
           cv_imageout->image.data[posdata] = 0;
           cv_imageout->image.data[posdata+1] = 0;
           cv_imageout->image.data[posdata+2] = 0;
+        }else{
+
+         
+           xs.push_back(x);
+           ys.push_back(y);
+           n++ ;
+                 
         }
+
       }
+
+      float media_x = 0.0f ;
+      float media_y = 0.0f ;
+
+      for (int i = 0 ; i < n ; i++){
+           media_x+=xs[i];
+           media_y+=ys[i];
+      }
+     
+      if (n > 0) {
+      media_x=media_x/n;
+      media_y=media_y/n;
+      int ballx = (int)media_x ;
+      int bally = (int)media_y ;
+      ROS_INFO("ballx %d\n", ballx);
+      ROS_INFO("bally %d\n", bally);
+
+      cv::Point centre(ballx, bally);
+      int radio = 20;
+      cv::Scalar colorCircle(0,0,255);
+      int thickness = 2;
+      cv::circle(cv_ptr->image, centre, radio, colorCircle, thickness);
+      }
+     
 
 
     if (changed)
