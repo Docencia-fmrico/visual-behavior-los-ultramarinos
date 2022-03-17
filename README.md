@@ -82,6 +82,13 @@ Deteccion de Humanos : ( Darknet )
 
 <img src="https://user-images.githubusercontent.com/69701088/158878029-ee796c93-177c-4f43-89ae-59969c43ecd7.png" width="300" height="200"/>
 
+Siempre coger el objeto mas cercano :
+
+<img src="https://user-images.githubusercontent.com/69701088/158886196-0b647c28-72f4-4dc4-9cfe-d98d68dbc708.gif" width="400" height="225"/> <img src="https://user-images.githubusercontent.com/69701088/158886098-818bb482-23ad-42d2-b8ce-0a4e02ec7001.gif" width="225" height="225"/>
+
+
+
+
 ## Siguiendo la pelota
 ### - Funcionamiento
 
