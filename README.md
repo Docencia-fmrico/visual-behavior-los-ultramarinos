@@ -11,16 +11,11 @@ La práctica se compone de tres partes:
 2. Seguimiento visual de una persona: Similar al punto anterior, pero detectando a la persona con darket_ros.
 3. Comportamiento mixto: El robot debe seguir tanto a las personas como a las pelotas que perciba con la cámara, teniendo prioridad la pelota.
 
-Entrega: Viernes 18 de Marzo.
-
-
-
 ## Índice
 - [Introducción](#Introducción)
   - [Control](#Control)
   - [Visión](#Visión)
   - [Coordinación](#Coordinación)
-- [Behavior Tree](#Behavior-Tree)
 - [Primer Programa](#Primer-Programa)
 - [Follow Person](#Follow-Person)
 - [Tercer Programa](#Tercer-Programa)
@@ -36,8 +31,6 @@ La funcionalidad de los programas está dividida en tres partes: control, visió
 Grafo de computación:
 
 <img src="https://user-images.githubusercontent.com/98589920/158873516-9a189ae3-e1b1-4671-b1b0-cffa7876735e.png" width="300" height="300"/>
-
-
 
 
 ## Visión <img src="https://camo.githubusercontent.com/19a4654887b808ab8c1733fcf6a84a9a58b1649c9742efca33b617c5a704206b/68747470733a2f2f63756c746f667468657061727479706172726f742e636f6d2f706172726f74732f68642f696c6c756d696e617469706172726f742e676966" width="30" height="30"/>
@@ -56,27 +49,32 @@ Siempre coger el objeto mas cercano :
 
 ## Coordinación <img src="https://camo.githubusercontent.com/9504c4b0f495776b11b2da4c699bf8a7451aefd889435946fc10ca639d99b781/68747470733a2f2f63756c746f667468657061727479706172726f742e636f6d2f706172726f74732f68642f6d656c64706172726f742e676966" width="30" height="30"/>
 
-El nodo de coordinación contiene la inteligencia del programa. Recibe los datos de los nodos de visión y los selecciona para después enviarlos al nodo de control.
+El nodo de coordinación contiene la inteligencia del programa :ghost:. Recibe los datos de los nodos de visión y los selecciona para después enviarlos al nodo de control.
 
 Esta selección consta de tres partes.
 
-### Parte 1
+### Parte 1 💞
 
 Datos consistentes: 
 
+<img src="https://user-images.githubusercontent.com/69701088/158893416-149cb562-b9fb-4e21-b82a-cbd3262c5623.gif" width="200" height="100"/>
+
 Los nodos de visión envían 10 mensajes por segundo. La mayoría son del objeto que estamos siguiendo, pero es posible que de un frame a otro se pierda el objeto que estamos siguiendo momentáneamente. Si no hay otros objetos a los que prestar atención, esto no sería un problema, porque el nodo de visión no mandaría ningún mensaje, pero a menudo nos encontramos con que el entorno contiene otro objeto que pasa el filtro, y recibimos sus datos. Estas distracciones momentáneas introducen ruido en nuestros datos e impiden al robot moverse consistentemente. El coordinador se asegura de mantener la atención del robot en el objeto que está siguiendo en ese momento.
 
-### Parte 2
+### Parte 2 😈
 
-Datos recientes: 
+<img src="https://user-images.githubusercontent.com/69701088/158894597-a49a99dc-ced3-4029-9e03-068d91d70a30.gif" width="200" height="100"/>
 
 Siempre que se recibe un dato válido de cualquier observador, se actualiza su recencia. Esta recencia se usa para mantener la atención del robot sobre el objeto incluso si se pierde temporalmente entre frames. Los objetos se consideran perdidos cuando su recencia supera 1 segundo.
 
-### Parte 3
+### Parte 3 🔥
 
 PELOTAS!!!
 
 Finalmente, el nodo de coordinación se asegura de actualizar el estado (encontrado o no) de las pelotas y las personas de forma independiente, y ordena al nodo de control seguir pelotas antes que personas.
+
+
+![mucho-texto-mundo-bizarro](https://user-images.githubusercontent.com/69701088/158895422-bff30ec4-6ff2-4fef-ac6b-5191f369cf0d.gif)
 
 ## Control <img src="https://camo.githubusercontent.com/9ed64b042a76b8a97016e877cbaee0d6df224a148034afef658d841cf0cd1791/68747470733a2f2f63756c746f667468657061727479706172726f742e636f6d2f706172726f74732f68642f6c6170746f705f706172726f742e676966" width="30" height="30"/>
 **La parte de control se encarga de calcular las velocidades del robot, en función de lo que obtiene del coordinador.**
@@ -90,24 +88,11 @@ Diagrama de bloques del controlador:
 
 <img src="https://user-images.githubusercontent.com/98589920/158069828-c22068a9-308f-4203-98a3-f074b5ffc7de.png" width="400" height="100"/> <img src="https://user-images.githubusercontent.com/98589920/158070001-26d49b98-c20d-4eb4-8361-679309338973.png" width="100" height="100"/>	
 
-
-
-
 Aplicamos el PID:
-
 
 <img src="https://user-images.githubusercontent.com/69701088/156851248-dc2d6777-d927-4fbb-9507-f9312af57cbf.gif" width="400" height="400"/> 
 
 <img src="https://user-images.githubusercontent.com/69701088/158868571-c13e575f-00d7-4798-9704-a3262c3ffb87.gif" width="400" height="225"/>		
-
-Funcionalidades del nodo
-| Funciones | Descripción |
-| --- | --- |
-| errorGiro | Función que calcula el error de giro as partir de dg |
-| errorAvance | Función que obtiene el error de avance a partir de da |
-| velocidadLineal | Función que calcula la velocidad lineal a partir del error de avance |
-| velocidadAngular | Función que calcula la velocidad angular a partir del error de giro |
-
 
 ## Siguiendo la pelota
 
