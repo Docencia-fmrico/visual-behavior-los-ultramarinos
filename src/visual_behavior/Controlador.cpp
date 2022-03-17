@@ -6,11 +6,11 @@
 
 
 Controlador::Controlador() 
-: PIDAngular(0, 1, 0, 0.8), PIDLineal(0, 3.0, 0,0.3)
+: PIDAngular(0, 1, 0, 0.8), PIDLineal(0, 3.0, 0,0.5)
 {
     
     distanciaMaxima = 3; 
-    distanciaSeguridad = 1 ; // ***###### IMPORTANTE ########**
+    distanciaSeguridad = 1; // ***###### IMPORTANTE ########**
     // PONER EN EL MENSAJE LOST DE COORDINADOR EN LA .x EL VALOR DE LA DISTANCIA DE SEGURIDAD
      
     // intervalos de las referencias de entrada 

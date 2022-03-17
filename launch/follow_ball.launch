@@ -1,5 +1,8 @@
 <launch>
 
+	<node pkg="visual_behavior_los_ultramarinos" type="nodo_camera_vb" name="nodo_camera_vb" output="screen">
+	</node>
+
 	<node pkg="visual_behavior_los_ultramarinos" type="ObservadorPelotasHSV" name="ObservadorPelotasHSV" output="screen">
 	</node>
 
@@ -8,5 +11,5 @@
 
 	<node pkg="visual_behavior_los_ultramarinos" type="Control" name="Control" output="screen">
 	</node>
-
+	
 </launch>

@@ -100,8 +100,8 @@ void callback_bbx(const sensor_msgs::ImageConstPtr& prof , const sensor_msgs::Im
 			 float angle = (px - distanciaAlCentro)/(distanciaAlCentro);
 			 pp.y = angle;
 			 Publicador.publish(pp);
-		   std::cout << "ball found" << std::endl;
-       ROS_INFO("dsitt %f", distMenor* 0.001f);
+		   //std::cout << "ball found" << std::endl;
+       //ROS_INFO("dsitt %f", distMenor* 0.001f);
        }
     }
     
@@ -124,8 +124,8 @@ int main(int argc, char** argv)
   	message_filters::Subscriber<sensor_msgs::Image> Sub_fil(nh, "/hsv/image_filtered", fr);
     Publicador = nh.advertise<geometry_msgs::Pose2D>("/ball_data", fr) ;  
     
-    typedef message_filters::sync_policies::ApproximateTime<sensor_msgs::Image,sensor_msgs::Image> MySyncPolicy_bbx;
-  	message_filters::Synchronizer<MySyncPolicy_bbx> sync_bbx(MySyncPolicy_bbx(10), Sub_prof, Sub_fil);
+    typedef message_filters::sync_policies::ApproximateTime<sensor_msgs::Image,sensor_msgs::Image> Sync;
+  	message_filters::Synchronizer<Sync> sync_bbx(Sync(10), Sub_prof, Sub_fil);
   	sync_bbx.registerCallback(boost::bind(&callback_bbx, _1, _2));
 
     

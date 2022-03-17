@@ -1,8 +1,12 @@
 <launch>
+
+	<node pkg="visual_behavior_los_ultramarinos" type="nodo_camera_vb" name="nodo_camera_vb" output="screen">
+	</node>
+
 	<node pkg="visual_behavior_los_ultramarinos" type="ObservadorPersonas" name="ObservadorPersonas" output="screen">
 	</node>
 
-	<node pkg="visual_behavior_los_ultramarinos" type="ObservadorPelotas" name="ObservadorPelotas" output="screen">
+	<node pkg="visual_behavior_los_ultramarinos" type="ObservadorPelotasHSV" name="ObservadorPelotasHSV" output="screen">
 	</node>
 
 	<node pkg="visual_behavior_los_ultramarinos" type="Coordinador" name="Coordinador" output="screen">
