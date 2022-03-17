@@ -1,0 +1,12 @@
+<launch>
+
+	<node pkg="visual_behavior_los_ultramarinos" type="ObservadorPelotas" name="ObservadorPelotasHSV" output="screen" launch-prefix="xterm -e gdb --args"/>
+
+   <node pkg="visual_behavior_los_ultramarinos" type="Coordinador" name="Coordinador" output="screen">
+	</node>
+
+	<node pkg="visual_behavior_los_ultramarinos" type="Control" name="Control" output="screen">
+	</node>
+    
+
+</launch>

@@ -52,7 +52,6 @@ bool lost(double latest_msg, double now){
 visual_behavior_los_ultramarinos::PolarPoint selectObject(visual_behavior_los_ultramarinos::PolarPoint[] objects)
 {	
 	visual_behavior_los_ultramarinos::PolarPoint pp_final = objects[0];
-
 	for (int i = 0; i < objects.size(); i++)
 	{
 		if (objects[i].distance < pp_final.distance)
@@ -60,7 +59,6 @@ visual_behavior_los_ultramarinos::PolarPoint selectObject(visual_behavior_los_ul
 			pp_final = objects[i];
 		}
 	}
-
     return pp_final;
 }
 */
@@ -76,6 +74,13 @@ int main(int argc, char** argv)
     ros::Publisher cPub = nh.advertise<geometry_msgs::Pose2D> ("/controller_instructions", fr, true);
 	ros::Subscriber personSub = nh.subscribe<geometry_msgs::Pose2D>("/person_data", fr, personReceived);
 	ros::Subscriber ballSub = nh.subscribe<geometry_msgs::Pose2D>("/ball_data", fr, ballReceived);
+
+    // ############# CAMBIO JORGE ###############
+	geometry_msgs::Pose2D lost_;
+	lost_.x = 1;
+	// ##########################################
+	// ***###### IMPORTANTE ########**
+    // PONER EN EL MENSAJE LOST DE COORDINADOR EN LA .x EL VALOR DE LA DISTANCIA DE SEGURIDAD
 	
 	while (ros::ok())
 	{

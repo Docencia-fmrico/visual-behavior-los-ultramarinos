@@ -9,8 +9,23 @@
 #include <message_filters/subscriber.h>
 #include <message_filters/time_synchronizer.h>
 #include <message_filters/sync_policies/approximate_time.h>
-
 #include <memory>
+#include <iostream>
+#include "ros/ros.h"
+#include "sensor_msgs/Image.h"
+#include "cv_bridge/cv_bridge.h"
+#include "darknet_ros_msgs/BoundingBoxes.h"
+#include "tf/tf.h"
+#include "visual_behavior_los_ultramarinos/RobotData.h"
+#include <message_filters/subscriber.h>
+#include <message_filters/time_synchronizer.h>
+#include <message_filters/sync_policies/approximate_time.h>
+#include <memory>
+#include <sensor_msgs/image_encodings.h>
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/highgui/highgui.hpp>
+#include <opencv2/core/types.hpp>
+#include <math.h>
 
 //visual_behavior_los_ultramarinos::RobotData mMsgSensorData;
 cv_bridge::CvImagePtr mImageData;
@@ -27,6 +42,7 @@ geometry_msgs::Pose2D pp;
 void callback_bbx(const sensor_msgs::ImageConstPtr& img, const darknet_ros_msgs::BoundingBoxesConstPtr& boxes){
 
 	mImageData = cv_bridge::toCvCopy(*img, sensor_msgs::image_encodings::TYPE_32FC1);
+	
 	std::string tag = "sports ball";
 	//mMsgSensorData.boundingboxes.clear();
 	float px_center=mImageData->image.cols/2;

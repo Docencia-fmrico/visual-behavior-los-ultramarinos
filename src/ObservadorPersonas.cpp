@@ -23,11 +23,13 @@ geometry_msgs::Pose2D pp;
 
 
 
-
 void callback_bbx(const sensor_msgs::ImageConstPtr& img, const darknet_ros_msgs::BoundingBoxesConstPtr& boxes){
 
 	mImageData = cv_bridge::toCvCopy(*img, sensor_msgs::image_encodings::TYPE_32FC1);
+	cv::Mat profundidadG_ ;
+    cv::GaussianBlur(mImageData->image,profundidadG_,cv::Size(33,33),0,0,0);
 	std::string tag = "person";
+
 	//mMsgSensorData.boundingboxes.clear();
 	float px_center=mImageData->image.cols/2;
 	float py_center=mImageData->image.rows/2;
@@ -41,7 +43,7 @@ void callback_bbx(const sensor_msgs::ImageConstPtr& img, const darknet_ros_msgs:
 			float px = (boxes->bounding_boxes[i].xmax + boxes->bounding_boxes[i].xmin) / 2;
 			float py = (boxes->bounding_boxes[i].ymax + boxes->bounding_boxes[i].ymin) / 2;
 
-			float dist = mImageData->image.at<float>(cv::Point(px, py))* 0.001f;// * 0.01f;
+			float dist = profundidadG_.at<float>(cv::Point(px, py))* 0.001f;// * 0.01f;
 
 			if (dist < min_dist)
 			{
