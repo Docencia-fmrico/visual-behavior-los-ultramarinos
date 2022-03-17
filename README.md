@@ -74,6 +74,10 @@ Funcionalidades del nodo
 
 ## Visión <img src="https://camo.githubusercontent.com/9ed64b042a76b8a97016e877cbaee0d6df224a148034afef658d841cf0cd1791/68747470733a2f2f63756c746f667468657061727479706172726f742e636f6d2f706172726f74732f68642f6c6170746f705f706172726f742e676966" width="30" height="30"/>
 
+Deteccion de Pelota :
+<img src="https://user-images.githubusercontent.com/69701088/158876552-6242faa4-2ccc-42e2-b2fe-b714b85d998e.png" width="740" height="200"/>
+
+
 ## Behavior Tree
 Esta es el behaviortree:
 ```mermaid
