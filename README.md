@@ -47,10 +47,13 @@ Diagrama de bloques del controlador:
 
 <img src="https://user-images.githubusercontent.com/98589920/158069828-c22068a9-308f-4203-98a3-f074b5ffc7de.png" width="400" height="100"/> <img src="https://user-images.githubusercontent.com/98589920/158070001-26d49b98-c20d-4eb4-8361-679309338973.png" width="100" height="100"/>	
 
+
+
+
 Aplicamos el PID:
 
 
-<img src="https://user-images.githubusercontent.com/69701088/156851248-dc2d6777-d927-4fbb-9507-f9312af57cbf.gif" width="400" height="400"/>	
+<img src="https://user-images.githubusercontent.com/69701088/156851248-dc2d6777-d927-4fbb-9507-f9312af57cbf.gif" width="400" height="400"/> <img src="https://user-images.githubusercontent.com/69701088/158868571-c13e575f-00d7-4798-9704-a3262c3ffb87.gif" width="500" height="250"/>		
 
 Funcionalidades del nodo
 | Funciones | Descripción |
