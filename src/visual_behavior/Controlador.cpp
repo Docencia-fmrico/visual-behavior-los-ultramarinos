@@ -4,25 +4,26 @@
 #include "visual_behavior/Controlador.hpp"
 #include <gtest/gtest.h>
 
-// Preguntar a Paco -//
 
 Controlador::Controlador() 
-: PIDAngular(0, 10.0, -0.8 ,0.8), PIDLineal(0, 3.0, -0.5 ,0.5)
+: PIDAngular(0, 1, 0, 0.8), PIDLineal(0, 3.0, 0,0.5)
 {
     
-    distanciaMaxima = 1.2; // *** Cambiar *****
-    distanciaSeguridad = 0.35 ; 
+    distanciaMaxima = 3; 
+    distanciaSeguridad = 1; // ***###### IMPORTANTE ########**
+    // PONER EN EL MENSAJE LOST DE COORDINADOR EN LA .x EL VALOR DE LA DISTANCIA DE SEGURIDAD
      
     // intervalos de las referencias de entrada 
     rangoAngular = {0,10.0};
     rangoLineal = {0,distanciaMaxima};
+    
 
     // intervalor de las salida 
     rangoAngularSalida = {-0.75,0.75};
     rangoLinealSalida = {-0.75,0.75};
      
-    //
-    alfa = 1 ; //parametro que relaiona la el cambio lineal del angulo que el cambio lineal
+    
+    alfa = 1.5 ; //parametro que relaiona la el cambio lineal del angulo que el cambio lineal
 }
 
 
@@ -35,8 +36,11 @@ Controlador::Controlador()
      return da - distanciaSeguridad;
 }
 
- double Controlador::velocidadLineal( double errorLineal){
-    return PIDLineal.get_output(errorLineal);
+ double Controlador::velocidadLineal( double errorLineal ){
+    
+    return PIDLineal.get_output(errorLineal) ;
+    
+      
 }
 
  double Controlador::velocidadAngular( double errorAngular){
@@ -44,15 +48,3 @@ Controlador::Controlador()
     return PIDAngular.get_output(errorAngular) * relacionLinealAngular ;
 }
 
-/*
-float Controlador::velocidadAngular(float errorAngular){
-    float relacionLinealAngular = 0 ;
-    return PIDAngular.get_output(errorAngular) * relacionLinealAngular ;
-}
-
-
-float Controlador::reglaDeTres(float widthconocido){
-    float absWidthc = std::abs(widthconocido);
-    return absWidthc/(width/2);
-}
-*/
