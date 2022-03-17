@@ -107,8 +107,9 @@ Después el nodo coordinador se asegura de que los datos recibidos son válidos 
 Finalmente el nodo de control usa PIDs para determinar las velocidades angular y lineal del robot y las publica.
 	
 ### - Vídeo
+https://user-images.githubusercontent.com/69701088/158902668-de8778f4-7198-45fb-a938-127b9ebad46f.mp4
 
-## Siguiendo a una persona
+## Siguiendo a una persona :walking:
 
 ### - Funcionamiento
 
@@ -119,6 +120,7 @@ En este caso el nodo de visión usa darknet_ros para detectar a la persona y det
 Los nodos coordinador y de control tienen el mismo comportamiento.
 	
 ### - Vídeo
+https://user-images.githubusercontent.com/69701088/158897940-17c483b1-c82f-4e44-97fa-65e6b17ba40f.mp4
 
 ## Pelotas y personas
 
