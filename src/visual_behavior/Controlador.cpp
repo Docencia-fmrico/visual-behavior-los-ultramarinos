@@ -19,13 +19,13 @@
 #include <cmath>
 #include <gtest/gtest.h>
 
-// Preguntar a Paco -//
 
 Controlador::Controlador()
-: PIDAngular(0, 10.0, -0.8, 0.8), PIDLineal(0, 3.0, -0.5, 0.5)
+: PIDAngular(0, 1, 0, 0.8), PIDLineal(0, 3.0, 0, 0.5)
 {
-  distanciaMaxima = 1.2;  // *** Cambiar *****
-  distanciaSeguridad = 0.35;
+  distanciaMaxima = 3;
+  distanciaSeguridad = 1;
+  // PONER EN EL MENSAJE LOST DE COORDINADOR EN LA .x EL VALOR DE LA DISTANCIA DE SEGURIDAD
 
   // intervalos de las referencias de entrada
   rangoAngular = {0, 10.0};
@@ -35,14 +35,13 @@ Controlador::Controlador()
   rangoAngularSalida = {-0.75, 0.75};
   rangoLinealSalida = {-0.75, 0.75};
 
-  alfa = 1;  // parametro que relaciona la el cambio lineal del angulo que el cambio lineal
+  alfa = 1.5;  // parametro que relaiona la el cambio lineal del angulo que el cambio lineal
 }
 
 double Controlador::errorGiro(double dg)
 {
   return -dg;
 }
-
 double Controlador::errorAvance(double da)
 {
   return da - distanciaSeguridad;

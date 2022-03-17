@@ -7,7 +7,16 @@ add_compile_options(-std=c++17)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED COMPONENTS roscpp std_msgs geometry_msgs message_generation cv_bridge image_transport darknet_ros_msgs roslint)
+find_package(catkin REQUIRED COMPONENTS 
+roscpp 
+std_msgs 
+geometry_msgs 
+message_generation 
+cv_bridge 
+image_transport
+tf
+roslint
+)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -36,12 +45,17 @@ find_package(catkin REQUIRED COMPONENTS roscpp std_msgs geometry_msgs message_ge
 ##   * uncomment the generate_messages entry below
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
+add_message_files(
+  FILES
+  PolarPoint.msg
+  RobotData.msg
+)
 
-#generate_messages(
-#  DEPENDENCIES
-#  std_msgs
-#  geometry_msgs
-#)
+generate_messages(
+  DEPENDENCIES
+  std_msgs
+  geometry_msgs
+)
 
 ###################################
 ## catkin specific configuration ##
@@ -89,10 +103,9 @@ add_library(${PROJECT_NAME}
 ## The recommended prefix ensures that target names across packages don't collide
 
 
-add_executable(ObservadorPelotas src/ObservadorPelotas.cpp)
 add_executable(ObservadorPersonas src/ObservadorPersonas.cpp)
 add_executable(Coordinador src/Coordinador.cpp)
-
+add_executable(ObservadorPelotasHSV src/ObservadorPelotasHSV.cpp)
 add_executable( Control src/Control.cpp ) 
 
 
@@ -107,7 +120,7 @@ add_executable( Control src/Control.cpp )
 ## add_dependencies(${PROJECT_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries( ObservadorPelotas 
+target_link_libraries( ObservadorPelotasHSV
 ${catkin_LIBRARIES}
 )
 
@@ -122,21 +135,14 @@ ${catkin_LIBRARIES}
 target_link_libraries( Control 
 ${catkin_LIBRARIES} 
 ${PROJECT_NAME}
- ) 
+ )
 
- roslint_cpp(
+roslint_cpp(
  src/Control.cpp
  src/Coordinador.cpp
- src/ObservadorPelotas.cpp
+ src/ObservadorPelotasHSV.cpp
  src/ObservadorPersonas.cpp
 
  src/visual_behavior/PIDController.cpp
  src/visual_behavior/Controlador.cpp
- tests/testsControl.cpp
 )
-
-catkin_add_gtest(testsControl tests/testsControl.cpp)
-add_dependencies(testsControl ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-if(TARGET testsControl)
-   target_link_libraries(testsControl ${catkin_LIBRARIES} ${PROJECT_NAME})
- endif()

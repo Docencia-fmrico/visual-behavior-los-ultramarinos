@@ -14,9 +14,11 @@
 
 #ifndef VISUAL_BEHAVIOR__CONTROLADOR_HPP_
 #define VISUAL_BEHAVIOR__CONTROLADOR_HPP_
-#include <cmath>
+
+#include "visual_behavior/PIDController.hpp"
 #include <stdio.h>
 #include <stdlib.h>
+#include <cmath>
 
 class PIDController
 {
@@ -33,5 +35,4 @@ private:
   double min_output_, max_output_;
   double prev_error_, int_error_;
 };
-
 #endif  // BR2_TRACKING__PIDCONTROLLER_HPP_

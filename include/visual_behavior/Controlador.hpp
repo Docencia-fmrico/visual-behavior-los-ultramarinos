@@ -15,25 +15,23 @@
 #ifndef CONTROLADOR_HPP_
 #define CONTROLADOR_HPP_
 
-#include <stdio.h>
-#include <iostream>
-#include <vector>
 #include "visual_behavior/PIDController.hpp"
 #include "visual_behavior/Controlador.hpp"
 
+#include <stdio.h>
+#include <iostream>
+#include <vector>
 
 class Controlador
 {
 public:
   Controlador();
-
   double errorGiro(double dg);
   double errorAvance(double da);
   double velocidadAngular(double errorAngular);
   double velocidadLineal(double errorAvance);
 
-     
-protected:
+protected:  
   double distanciaMaxima;
   double distanciaSeguridad;
 
