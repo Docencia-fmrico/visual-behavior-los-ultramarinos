@@ -15,6 +15,7 @@ message_generation
 cv_bridge 
 image_transport
 tf
+roslint
 )
 
 ## System dependencies are found with CMake's conventions
@@ -136,4 +137,12 @@ ${catkin_LIBRARIES}
 ${PROJECT_NAME}
  )
 
- 
+roslint_cpp(
+ src/Control.cpp
+ src/Coordinador.cpp
+ src/ObservadorPelotasHSV.cpp
+ src/ObservadorPersonas.cpp
+
+ src/visual_behavior/PIDController.cpp
+ src/visual_behavior/Controlador.cpp
+)
