@@ -38,6 +38,47 @@ Grafo de computación:
 <img src="https://user-images.githubusercontent.com/98589920/158873516-9a189ae3-e1b1-4671-b1b0-cffa7876735e.png" width="300" height="300"/>
 
 
+
+
+## Visión <img src="https://camo.githubusercontent.com/9ed64b042a76b8a97016e877cbaee0d6df224a148034afef658d841cf0cd1791/68747470733a2f2f63756c746f667468657061727479706172726f742e636f6d2f706172726f74732f68642f6c6170746f705f706172726f742e676966" width="30" height="30"/>
+
+
+## Coordinación <img src="https://camo.githubusercontent.com/9ed64b042a76b8a97016e877cbaee0d6df224a148034afef658d841cf0cd1791/68747470733a2f2f63756c746f667468657061727479706172726f742e636f6d2f706172726f74732f68642f6c6170746f705f706172726f742e676966" width="30" height="30"/>
+
+El nodo de coordinación contiene la inteligencia del programa. Recibe los datos de los nodos de visión y los selecciona para después enviarlos al nodo de control.
+
+Esta selección consta de tres partes.
+
+### Parte 1
+
+Datos consistentes: 
+
+Los nodos de visión envían 10 mensajes por segundo. La mayoría son del objeto que estamos siguiendo, pero es posible que de un frame a otro se pierda el objeto que estamos siguiendo momentáneamente. Si no hay otros objetos a los que prestar atención, esto no sería un problema, porque el nodo de visión no mandaría ningún mensaje, pero a menudo nos encontramos con que el entorno contiene otro objeto que pasa el filtro, y recibimos sus datos. Estas distracciones momentáneas introducen ruido en nuestros datos e impiden al robot moverse consistentemente. El coordinador se asegura de mantener la atención del robot en el objeto que está siguiendo en ese momento.
+
+### Parte 2
+
+Datos recientes: 
+
+Siempre que se recibe un dato válido de cualquier observador, se actualiza su recencia. Esta recencia se usa para mantener la atención del robot sobre el objeto incluso si se pierde temporalmente entre frames. Los objetos se consideran perdidos cuando su recencia supera 1 segundo.
+
+### Parte 3
+
+PELOTAS!!!
+
+Finalmente, el nodo de coordinación se asegura de actualizar el estado (encontrado o no) de las pelotas y las personas de forma independiente, y ordena al nodo de control seguir pelotas antes que personas.
+
+Deteccion de Pelota : (HSV + DETECCION CONTORNOS)
+
+<img src="https://user-images.githubusercontent.com/69701088/158876552-6242faa4-2ccc-42e2-b2fe-b714b85d998e.png" width="740" height="200"/>
+
+Deteccion de Humanos : ( Darknet )
+
+<img src="https://user-images.githubusercontent.com/69701088/158878029-ee796c93-177c-4f43-89ae-59969c43ecd7.png" width="300" height="200"/>
+
+Siempre coger el objeto mas cercano :
+
+<img src="https://user-images.githubusercontent.com/69701088/158886196-0b647c28-72f4-4dc4-9cfe-d98d68dbc708.gif" width="400" height="225"/> <img src="https://user-images.githubusercontent.com/69701088/158886098-818bb482-23ad-42d2-b8ce-0a4e02ec7001.gif" width="225" height="225"/>
+
 ## Control <img src="https://camo.githubusercontent.com/9ed64b042a76b8a97016e877cbaee0d6df224a148034afef658d841cf0cd1791/68747470733a2f2f63756c746f667468657061727479706172726f742e636f6d2f706172726f74732f68642f6c6170746f705f706172726f742e676966" width="30" height="30"/>
 **La parte de control se encarga de calcular las velocidades del robot, en función de lo que obtiene del coordinador.**
 
@@ -69,27 +110,8 @@ Funcionalidades del nodo
 | velocidadAngular | Función que calcula la velocidad angular a partir del error de giro |
 
 
-## Coordinación <img src="https://camo.githubusercontent.com/9ed64b042a76b8a97016e877cbaee0d6df224a148034afef658d841cf0cd1791/68747470733a2f2f63756c746f667468657061727479706172726f742e636f6d2f706172726f74732f68642f6c6170746f705f706172726f742e676966" width="30" height="30"/>
-
-
-## Visión <img src="https://camo.githubusercontent.com/9ed64b042a76b8a97016e877cbaee0d6df224a148034afef658d841cf0cd1791/68747470733a2f2f63756c746f667468657061727479706172726f742e636f6d2f706172726f74732f68642f6c6170746f705f706172726f742e676966" width="30" height="30"/>
-
-Deteccion de Pelota : (HSV + DETECCION CONTORNOS)
-
-<img src="https://user-images.githubusercontent.com/69701088/158876552-6242faa4-2ccc-42e2-b2fe-b714b85d998e.png" width="740" height="200"/>
-
-Deteccion de Humanos : ( Darknet )
-
-<img src="https://user-images.githubusercontent.com/69701088/158878029-ee796c93-177c-4f43-89ae-59969c43ecd7.png" width="300" height="200"/>
-
-Siempre coger el objeto mas cercano :
-
-<img src="https://user-images.githubusercontent.com/69701088/158886196-0b647c28-72f4-4dc4-9cfe-d98d68dbc708.gif" width="400" height="225"/> <img src="https://user-images.githubusercontent.com/69701088/158886098-818bb482-23ad-42d2-b8ce-0a4e02ec7001.gif" width="225" height="225"/>
-
-
-
-
 ## Siguiendo la pelota
+
 ### - Funcionamiento
 
 Este programa usa un nodo de visión, uno de coordinación y uno de control. 
@@ -103,6 +125,7 @@ Finalmente el nodo de control usa PIDs para determinar las velocidades angular y
 ### - Vídeo
 
 ## Siguiendo a una persona
+
 ### - Funcionamiento
 
 Este programa usa un nodo de visión, uno de coordinación y uno de control. 
@@ -114,6 +137,7 @@ Los nodos coordinador y de control tienen el mismo comportamiento.
 ### - Vídeo
 
 ## Pelotas y personas
+
 ### - Funcionamiento
 
 Este programa usa dos nodos de visión, uno de coordinación y uno de control.
