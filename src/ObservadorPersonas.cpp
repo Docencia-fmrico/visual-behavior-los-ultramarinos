@@ -37,7 +37,7 @@ void callback_bbx(const sensor_msgs::ImageConstPtr& img, const darknet_ros_msgs:
 	float py_center=mImageData->image.rows/2;
 	// #############################
 	//min_dist=3;
-	min_dist=3;
+	min_dist=5;
 	// #####################################
 	found = false;
 	
