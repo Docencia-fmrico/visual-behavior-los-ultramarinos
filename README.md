@@ -53,7 +53,7 @@ El nodo de coordinación contiene la inteligencia del programa :ghost:. Recibe l
 
 Esta selección consta de tres partes.
 
-### Parte 1 💞
+### Parte 1
 
 Datos consistentes: 
 
@@ -61,20 +61,17 @@ Datos consistentes:
 
 Los nodos de visión envían 10 mensajes por segundo. La mayoría son del objeto que estamos siguiendo, pero es posible que de un frame a otro se pierda el objeto que estamos siguiendo momentáneamente. Si no hay otros objetos a los que prestar atención, esto no sería un problema, porque el nodo de visión no mandaría ningún mensaje, pero a menudo nos encontramos con que el entorno contiene otro objeto que pasa el filtro, y recibimos sus datos. Estas distracciones momentáneas introducen ruido en nuestros datos e impiden al robot moverse consistentemente. El coordinador se asegura de mantener la atención del robot en el objeto que está siguiendo en ese momento.
 
-### Parte 2 😈
+### Parte 2
 
 <img src="https://user-images.githubusercontent.com/69701088/158894597-a49a99dc-ced3-4029-9e03-068d91d70a30.gif" width="200" height="100"/>
 
 Siempre que se recibe un dato válido de cualquier observador, se actualiza su recencia. Esta recencia se usa para mantener la atención del robot sobre el objeto incluso si se pierde temporalmente entre frames. Los objetos se consideran perdidos cuando su recencia supera 1 segundo.
 
-### Parte 3 🔥
+### Parte 3
 
 PELOTAS!!!
 
 Finalmente, el nodo de coordinación se asegura de actualizar el estado (encontrado o no) de las pelotas y las personas de forma independiente, y ordena al nodo de control seguir pelotas antes que personas.
-
-
-![mucho-texto-mundo-bizarro](https://user-images.githubusercontent.com/69701088/158895422-bff30ec4-6ff2-4fef-ac6b-5191f369cf0d.gif)
 
 ## Control <img src="https://camo.githubusercontent.com/9ed64b042a76b8a97016e877cbaee0d6df224a148034afef658d841cf0cd1791/68747470733a2f2f63756c746f667468657061727479706172726f742e636f6d2f706172726f74732f68642f6c6170746f705f706172726f742e676966" width="30" height="30"/>
 **La parte de control se encarga de calcular las velocidades del robot, en función de lo que obtiene del coordinador.**
@@ -135,3 +132,7 @@ El nodo de coordinación ahora además se encarga de priorizar el objeto de segu
 El nodo de control recibe los datos filtrados por el nodo coordinador, siguiendo siempre al objeto determinado por el mismo.
 
 ### - Vídeo
+
+https://user-images.githubusercontent.com/69701088/158904339-f7fbc0a5-b4e6-4e2f-95ba-6ffbe7b21f4e.mp4
+
+
