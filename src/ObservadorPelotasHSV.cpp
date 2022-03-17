@@ -59,7 +59,7 @@ void callback_bbx(const sensor_msgs::ImageConstPtr& prof , const sensor_msgs::Im
     cv::Scalar colorCircle1(255,255 , 255);
     
     // si hay un mas de un contorno me quedo con el mas cercano
-    std::cout << contours.size() << std::endl;
+    //std::cout << contours.size() << std::endl;
     if (contours.size() > 0) { 
 
       geometry_msgs::Pose2D pp;
@@ -106,9 +106,9 @@ void callback_bbx(const sensor_msgs::ImageConstPtr& prof , const sensor_msgs::Im
     }
     
 
-    cv::imshow("Otra Imagen Filtrada", img_);
+    cv::imshow("BALL OBSERVERR", img_);
     //cv::imshow("TIto GAus xd", profundidadG_);
-    cv::imshow("Prof", profundidad->image);
+    //cv::imshow("Prof", profundidad->image);
     cv::waitKey(3);
 }
 

@@ -105,7 +105,6 @@ add_library(${PROJECT_NAME}
 add_executable(ObservadorPersonas src/ObservadorPersonas.cpp)
 add_executable(Coordinador src/Coordinador.cpp)
 add_executable(ObservadorPelotasHSV src/ObservadorPelotasHSV.cpp)
-add_executable(nodo_camera_vb src/nodo_camera_vb.cpp)
 add_executable( Control src/Control.cpp ) 
 
 
@@ -135,11 +134,6 @@ ${catkin_LIBRARIES}
 target_link_libraries( Control 
 ${catkin_LIBRARIES} 
 ${PROJECT_NAME}
- ) 
-
-target_link_libraries( nodo_camera_vb 
-${catkin_LIBRARIES} 
-${PROJECT_NAME}
- ) 
+ )
 
  
