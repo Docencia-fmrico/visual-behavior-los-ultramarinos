@@ -35,7 +35,7 @@ La funcionalidad de los programas está dividida en tres partes: control, visió
 
 Grafo de computación:
 
-<img src="https://user-images.githubusercontent.com/98589920/158873516-9a189ae3-e1b1-4671-b1b0-cffa7876735e.png" width="400" height="400"/>
+<img src="https://user-images.githubusercontent.com/98589920/158873516-9a189ae3-e1b1-4671-b1b0-cffa7876735e.png" width="300" height="300"/>
 
 
 ## Control <img src="https://camo.githubusercontent.com/9ed64b042a76b8a97016e877cbaee0d6df224a148034afef658d841cf0cd1791/68747470733a2f2f63756c746f667468657061727479706172726f742e636f6d2f706172726f74732f68642f6c6170746f705f706172726f742e676966" width="30" height="30"/>
@@ -56,7 +56,9 @@ Diagrama de bloques del controlador:
 Aplicamos el PID:
 
 
-<img src="https://user-images.githubusercontent.com/69701088/156851248-dc2d6777-d927-4fbb-9507-f9312af57cbf.gif" width="400" height="400"/> <img src="https://user-images.githubusercontent.com/69701088/158868571-c13e575f-00d7-4798-9704-a3262c3ffb87.gif" width="400" height="225"/>		
+<img src="https://user-images.githubusercontent.com/69701088/156851248-dc2d6777-d927-4fbb-9507-f9312af57cbf.gif" width="400" height="400"/> 
+
+<img src="https://user-images.githubusercontent.com/69701088/158868571-c13e575f-00d7-4798-9704-a3262c3ffb87.gif" width="400" height="225"/>		
 
 Funcionalidades del nodo
 | Funciones | Descripción |
