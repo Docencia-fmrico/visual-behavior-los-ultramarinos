@@ -35,15 +35,15 @@ Grafo de computación:
 
 ## Visión <img src="https://camo.githubusercontent.com/19a4654887b808ab8c1733fcf6a84a9a58b1649c9742efca33b617c5a704206b/68747470733a2f2f63756c746f667468657061727479706172726f742e636f6d2f706172726f74732f68642f696c6c756d696e617469706172726f742e676966" width="30" height="30"/>
 
-Deteccion de Pelota : (HSV + DETECCION CONTORNOS)
+Deteccion de Pelota: (HSV + DETECCION CONTORNOS)
 
 <img src="https://user-images.githubusercontent.com/69701088/158876552-6242faa4-2ccc-42e2-b2fe-b714b85d998e.png" width="740" height="200"/>
 
-Deteccion de Humanos : ( Darknet )
+Deteccion de Humanos: (darknet_ros)
 
 <img src="https://user-images.githubusercontent.com/69701088/158878029-ee796c93-177c-4f43-89ae-59969c43ecd7.png" width="300" height="200"/>
 
-Siempre coger el objeto mas cercano :
+Siempre coger el objeto mas cercano:
 
 <img src="https://user-images.githubusercontent.com/69701088/158886196-0b647c28-72f4-4dc4-9cfe-d98d68dbc708.gif" width="400" height="225"/> <img src="https://user-images.githubusercontent.com/69701088/158886098-818bb482-23ad-42d2-b8ce-0a4e02ec7001.gif" width="225" height="225"/>
 
