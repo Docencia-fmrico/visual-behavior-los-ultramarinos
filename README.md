@@ -1,5 +1,5 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-f059dc9a6f8d3a56e377f745f24479a46679e63a5d9fe6f495e02850cd0d8118.svg)](https://classroom.github.com/online_ide?assignment_repo_id=7213482&assignment_repo_type=AssignmentRepo)
-# visual-behaviors
+# visual-behaviors 🚀
 
 La práctica se compone de tres partes:
 
@@ -40,7 +40,7 @@ Grafo de computación:
 
 
 
-## Visión <img src="https://camo.githubusercontent.com/9ed64b042a76b8a97016e877cbaee0d6df224a148034afef658d841cf0cd1791/68747470733a2f2f63756c746f667468657061727479706172726f742e636f6d2f706172726f74732f68642f6c6170746f705f706172726f742e676966" width="30" height="30"/>
+## Visión <img src="https://camo.githubusercontent.com/19a4654887b808ab8c1733fcf6a84a9a58b1649c9742efca33b617c5a704206b/68747470733a2f2f63756c746f667468657061727479706172726f742e636f6d2f706172726f74732f68642f696c6c756d696e617469706172726f742e676966" width="30" height="30"/>
 
 Deteccion de Pelota : (HSV + DETECCION CONTORNOS)
 
@@ -54,7 +54,7 @@ Siempre coger el objeto mas cercano :
 
 <img src="https://user-images.githubusercontent.com/69701088/158886196-0b647c28-72f4-4dc4-9cfe-d98d68dbc708.gif" width="400" height="225"/> <img src="https://user-images.githubusercontent.com/69701088/158886098-818bb482-23ad-42d2-b8ce-0a4e02ec7001.gif" width="225" height="225"/>
 
-## Coordinación <img src="https://camo.githubusercontent.com/9ed64b042a76b8a97016e877cbaee0d6df224a148034afef658d841cf0cd1791/68747470733a2f2f63756c746f667468657061727479706172726f742e636f6d2f706172726f74732f68642f6c6170746f705f706172726f742e676966" width="30" height="30"/>
+## Coordinación <img src="https://camo.githubusercontent.com/9504c4b0f495776b11b2da4c699bf8a7451aefd889435946fc10ca639d99b781/68747470733a2f2f63756c746f667468657061727479706172726f742e636f6d2f706172726f74732f68642f6d656c64706172726f742e676966" width="30" height="30"/>
 
 El nodo de coordinación contiene la inteligencia del programa. Recibe los datos de los nodos de visión y los selecciona para después enviarlos al nodo de control.
 
