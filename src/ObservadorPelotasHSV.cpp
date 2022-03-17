@@ -38,12 +38,19 @@ void callback_bbx(const sensor_msgs::ImageConstPtr& prof , const sensor_msgs::Im
     cv::cvtColor(filtrada->image, img_, cv::COLOR_BGR2GRAY);
     //cv::fastNlMeansDenoising(img_,img_,30,7,21); 
     cv::threshold(img_, img_, 0, 255, CV_THRESH_BINARY);
+    
+    // **************POSIBLE COSA***************
+    cv::erode(profundidad->image, profundidad->image, cv::Mat());
+    ///
+    // saco el contorno de los objetos en escena 
 
-    cv::Mat profundidadG_ ;
-    cv::GaussianBlur(profundidad->image,profundidadG_,cv::Size(33,33),0,0,0);
+
+    //cv::Mat profundidadG_ ;
+    //cv::GaussianBlur(profundidad->image,profundidadG_,cv::Size(33,33),0,0,0);
     
     /// **************POSIBLE COSA***************
-    //cv::erode(img_, img_, cv::Mat());
+    cv::erode(img_, img_, cv::Mat());
+    cv::erode(img_, img_, cv::Mat());
     ///
     // saco el contorno de los objetos en escena 
     
@@ -89,7 +96,7 @@ void callback_bbx(const sensor_msgs::ImageConstPtr& prof , const sensor_msgs::Im
        if (px > 0 && py > 0 && px < width && py < height ) {
        // publico 
 
-       pp.x = distMenor ; //*0.001f;
+       pp.x = distMenor  *0.001f;
 			 float angle = (px - distanciaAlCentro)/(distanciaAlCentro);
 			 pp.y = angle;
 			 Publicador.publish(pp);
@@ -100,7 +107,7 @@ void callback_bbx(const sensor_msgs::ImageConstPtr& prof , const sensor_msgs::Im
     
 
     cv::imshow("Otra Imagen Filtrada", img_);
-    cv::imshow("TIto GAus xd", profundidadG_);
+    //cv::imshow("TIto GAus xd", profundidadG_);
     cv::imshow("Prof", profundidad->image);
     cv::waitKey(3);
 }
