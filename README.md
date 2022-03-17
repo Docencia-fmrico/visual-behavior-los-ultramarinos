@@ -82,74 +82,39 @@ Deteccion de Humanos : ( Darknet )
 
 <img src="https://user-images.githubusercontent.com/69701088/158878029-ee796c93-177c-4f43-89ae-59969c43ecd7.png" width="300" height="200"/>
 
-## Behavior Tree
-Esta es el behaviortree:
-```mermaid
-graph TD;
-  BehaviorTree-->Reactive_Sequence;
-	Reactive_Sequence-->FallBack;
-    FallBack-->ballseen?;
-    FallBack-->Turn;
-	Reactive_Sequence-->Reac_Seq;
-```
+## Siguiendo la pelota
+### - Funcionamiento
 
-## Primer Programa
-### 1. Objetivo
-El objetivo del primer programa es ...
-### 2. Funciones
-| Funciones | Descripción |
-| --- | --- |
-|  |  |
-|  |  |
+Este programa usa un nodo de visión, uno de coordinación y uno de control. 
 
-```c++
+El nodo de visión usa un filtro HSV para filtrar el color rosa y determinar la posición de la pelota usando la imagen de profundidad.
+	
+Después el nodo coordinador se asegura de que los datos recibidos son válidos y los envía al nodo de control.
+	
+Finalmente el nodo de control usa PIDs para determinar las velocidades angular y lineal del robot y las publica.
+	
+### - Vídeo
 
-```
-### 3. Vídeo
+## Siguiendo a una persona
+### - Funcionamiento
 
-## Follow Person
-### 1. Objetivo
-El objetivo del segundo programa es seguir a una persona detectandola con darket_ros.
-### 2. Lanzar el programa
-Al ejecutar roscore ponemos en marcha el Master, el servidor de parámetros y rosout que es el log donde podemos mostrar datos para depuración entre otros.
-```
-roscore
-```
-Lanzamos el simulador.
-```
-roslaunch robots sim.launch
-```
-Lanzamos el darknet_ros para detectar la persona.
-```
-roslaunch darknet_ros darknet_ros.launch image:=/camera/rgb/image_raw
-```
-Lanzamos el programa.
-```
-roslaunch visual_behavior_los_ultramarinos follow_person.launch
-```
-### 3. Funciones
-| Funciones | Descripción |
-| --- | --- |
-|  |  |
-|  |  |
+Este programa usa un nodo de visión, uno de coordinación y uno de control. 
 
-```c++
+En este caso el nodo de visión usa darknet_ros para detectar a la persona y determina su posición en la imagen de profundidad igual que en el seguimiento de la pelota.
 
-```
-### 4. Vídeo
+Los nodos coordinador y de control tienen el mismo comportamiento.
+	
+### - Vídeo
 
-## Tercer Programa
-### 1. Objetivo
-El objetivo del tercer programa es ...
-### 2. Funciones
-| Funciones | Descripción |
-| --- | --- |
-|  |  |
-|  |  |
+## Pelotas y personas
+### - Funcionamiento
 
-```c++
+Este programa usa dos nodos de visión, uno de coordinación y uno de control.
 
-```
-### 3. Vídeo
+Los nodos de visión son los empleados en los programas anteriores, con HSV para pelotas y darknet_ros para personas.
 
-## Tests
+El nodo de coordinación ahora además se encarga de priorizar el objeto de seguimiento, enviando solo la posición de la pelota si hay una pelota y una persona detectadas, y actualizando el estado de ambos objetos.
+
+El nodo de control recibe los datos filtrados por el nodo coordinador, siguiendo siempre al objeto determinado por el mismo.
+
+### - Vídeo
