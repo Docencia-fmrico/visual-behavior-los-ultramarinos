@@ -42,6 +42,17 @@ Grafo de computación:
 
 ## Visión <img src="https://camo.githubusercontent.com/9ed64b042a76b8a97016e877cbaee0d6df224a148034afef658d841cf0cd1791/68747470733a2f2f63756c746f667468657061727479706172726f742e636f6d2f706172726f74732f68642f6c6170746f705f706172726f742e676966" width="30" height="30"/>
 
+Deteccion de Pelota : (HSV + DETECCION CONTORNOS)
+
+<img src="https://user-images.githubusercontent.com/69701088/158876552-6242faa4-2ccc-42e2-b2fe-b714b85d998e.png" width="740" height="200"/>
+
+Deteccion de Humanos : ( Darknet )
+
+<img src="https://user-images.githubusercontent.com/69701088/158878029-ee796c93-177c-4f43-89ae-59969c43ecd7.png" width="300" height="200"/>
+
+Siempre coger el objeto mas cercano :
+
+<img src="https://user-images.githubusercontent.com/69701088/158886196-0b647c28-72f4-4dc4-9cfe-d98d68dbc708.gif" width="400" height="225"/> <img src="https://user-images.githubusercontent.com/69701088/158886098-818bb482-23ad-42d2-b8ce-0a4e02ec7001.gif" width="225" height="225"/>
 
 ## Coordinación <img src="https://camo.githubusercontent.com/9ed64b042a76b8a97016e877cbaee0d6df224a148034afef658d841cf0cd1791/68747470733a2f2f63756c746f667468657061727479706172726f742e636f6d2f706172726f74732f68642f6c6170746f705f706172726f742e676966" width="30" height="30"/>
 
@@ -66,18 +77,6 @@ Siempre que se recibe un dato válido de cualquier observador, se actualiza su r
 PELOTAS!!!
 
 Finalmente, el nodo de coordinación se asegura de actualizar el estado (encontrado o no) de las pelotas y las personas de forma independiente, y ordena al nodo de control seguir pelotas antes que personas.
-
-Deteccion de Pelota : (HSV + DETECCION CONTORNOS)
-
-<img src="https://user-images.githubusercontent.com/69701088/158876552-6242faa4-2ccc-42e2-b2fe-b714b85d998e.png" width="740" height="200"/>
-
-Deteccion de Humanos : ( Darknet )
-
-<img src="https://user-images.githubusercontent.com/69701088/158878029-ee796c93-177c-4f43-89ae-59969c43ecd7.png" width="300" height="200"/>
-
-Siempre coger el objeto mas cercano :
-
-<img src="https://user-images.githubusercontent.com/69701088/158886196-0b647c28-72f4-4dc4-9cfe-d98d68dbc708.gif" width="400" height="225"/> <img src="https://user-images.githubusercontent.com/69701088/158886098-818bb482-23ad-42d2-b8ce-0a4e02ec7001.gif" width="225" height="225"/>
 
 ## Control <img src="https://camo.githubusercontent.com/9ed64b042a76b8a97016e877cbaee0d6df224a148034afef658d841cf0cd1791/68747470733a2f2f63756c746f667468657061727479706172726f742e636f6d2f706172726f74732f68642f6c6170746f705f706172726f742e676966" width="30" height="30"/>
 **La parte de control se encarga de calcular las velocidades del robot, en función de lo que obtiene del coordinador.**
