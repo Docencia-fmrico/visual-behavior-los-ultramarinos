@@ -12,13 +12,13 @@ La práctica se compone de tres partes:
 3. Comportamiento mixto: El robot debe seguir tanto a las personas como a las pelotas que perciba con la cámara, teniendo prioridad la pelota.
 
 ## Índice
-- [Introducción](#Introducción)
-  - [Control](#Control)
-  - [Visión](#Visión)
-  - [Coordinación](#Coordinación)
-- [Primer Programa](#Primer-Programa)
-- [Follow Person](#Follow-Person)
-- [Tercer Programa](#Tercer-Programa)
+- Introducción
+  - Control
+  - Visión
+  - Coordinación
+- Siguiendo la pelota
+- Siguiendo a una persona
+- Pelotas y personas
 
 ## Introducción <img src="https://camo.githubusercontent.com/a6af43479d42a1a2fb5c9b40ee7c8cb4166fe525162357d400ee99afe3eac2fa/68747470733a2f2f63756c746f667468657061727479706172726f742e636f6d2f706172726f74732f68642f676974687562706172726f742e676966" width="30" height="30"/>
 Práctica 2 de la asignatura software para robots:
@@ -91,7 +91,7 @@ Aplicamos el PID:
 
 <img src="https://user-images.githubusercontent.com/69701088/158868571-c13e575f-00d7-4798-9704-a3262c3ffb87.gif" width="400" height="225"/>		
 
-## Siguiendo la pelota
+## Siguiendo la pelota 🏐
 
 ### - Funcionamiento
 
@@ -119,7 +119,7 @@ Los nodos coordinador y de control tienen el mismo comportamiento.
 ### - Vídeo
 https://user-images.githubusercontent.com/69701088/158897940-17c483b1-c82f-4e44-97fa-65e6b17ba40f.mp4
 
-## Pelotas y personas
+## Pelotas y personas 🏐 :walking:
 
 ### - Funcionamiento
 
